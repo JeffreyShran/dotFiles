@@ -24,3 +24,7 @@ fi
 if ! curl --create-dirs "https://raw.githubusercontent.com/JeffreyShran/dotFiles/master/.bashrc" -o ".bashrc"; then
   printf '(bashrc) Curl failed with error code "%d"\n' "$?" >&2
 fi
+
+. .bashrc
+. .bash_profile
+. .bash_aliases
