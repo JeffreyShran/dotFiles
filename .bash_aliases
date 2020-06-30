@@ -31,6 +31,10 @@ function amassoutputtidyIP() {
 	[ -n "${1+set}" ] && cut -d']' -f2 "$1" | awk '{print $2}' | tr ',' '\n' | sort -u
 }
 
+function amassoutputtidyDOMAIN() {
+	[ -n "${1+set}" ] && cut -d']' -f2 "$1" | awk '{print $1}'
+}
+
 
 #
 # RIPGREP
