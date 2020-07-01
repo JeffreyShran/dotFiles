@@ -27,14 +27,13 @@ function cs() {
 	cd "$@" && ls
 }
 
-function amassoutputtidyIP() {
-	[ -n "${1+set}" ] && cut -d']' -f2 "$1" | awk '{print $2}' | tr ',' '\n' | sort -u
+function amassipoutputtidy() {
+	[ -n "${1+set}" ] && rg -oN "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "$1" | sort -u
 }
 
-function amassoutputtidyDOMAIN() {
+function amassdomainoutputtidy() {
 	[ -n "${1+set}" ] && cut -d']' -f2 "$1" | awk '{print $1}'
 }
-
 
 #
 # RIPGREP
@@ -53,4 +52,8 @@ function rgtakeovers() {
 
 function rgemail() {
 	[ -n "${1+set}" ] && rg -ie '\b[A-Za-z0-9._%+-]+(@|%40)[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b' "$1"
+}
+
+function rgip() {
+	[ -n "${1+set}" ] && rg "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" "$1"
 }
